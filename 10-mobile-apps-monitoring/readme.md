@@ -16,11 +16,13 @@ Make a note of Key and URL.
 
 ## 2. Mobile App
 
-Here is the TODO mobile App
+Here is the screenshots of the TODO Mobile App.
 
 <img src="images/img21.png" >
 
 ## 3. Instrumenting the Mobile App Code
+
+The source code of the TODO Mobile app is available [here](../src-todo-app)  
 
 1. Include Instana Agent into dependencies.
 
@@ -34,7 +36,7 @@ Configure the Key, URL and Meta data info in the InstanaConfig.
 
 3. InstanaAgent.setup
 
-In the main method, call the instana setup related to API with the key and URL referenced from Instanan Config
+In the main method, call the instana setup related to API with the key and URL referenced from Instana Config
 
 <img src="images/img33.png" >
 
