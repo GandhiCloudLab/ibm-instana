@@ -16,6 +16,7 @@ Make a note of Key and URL.
 
 <img src="images/img14.png" >
 </details>
+
 ## 2. Mobile App
 
 <details><summary>Click me for more info</summary>
@@ -25,6 +26,7 @@ Here is the screenshots of the TODO Mobile App.
 
 <img src="images/img21.png" >
 </details>
+
 ## 3. Instrumenting the Mobile App Code
 
 <details><summary>Click me for more info</summary>
@@ -69,6 +71,7 @@ Implement a Track User Action for add, update and delete functions.
 
 <img src="images/img40.png" >
 </details>
+
 ## 4. View App Dashboard
 
 <details><summary>Click me for more info</summary>
@@ -86,6 +89,7 @@ Implement a Track User Action for add, update and delete functions.
 <img src="images/img47.png" >
 <img src="images/img48.png" >
 </details>
+
 ## 5. View App Analytics
 
 <details><summary>Click me for more info</summary>
@@ -98,6 +102,7 @@ Implement a Track User Action for add, update and delete functions.
 <img src="images/img55.png" >
 <img src="images/img56.png" >
 </details>
+
 ## 6. View App Analytics Events
 
 <details><summary>Click me for more info</summary>
