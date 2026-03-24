@@ -22,7 +22,7 @@ Here is the screenshots of the TODO Mobile App.
 
 ## 3. Instrumenting the Mobile App Code
 
-The source code of the TODO Mobile app is available [here](../src-todo-app)  
+The source code of the TODO Mobile app is available [here](./src-todo-app)  
 
 1. Include Instana Agent into dependencies.
 
