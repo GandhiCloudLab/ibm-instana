@@ -4,6 +4,8 @@ Refer the product documentation [here](https://www.ibm.com/docs/en/instana-obser
 
 ## 1. Create Mobile App in Instana
 
+<details><summary>Click me for more info</summary>
+
 <img src="images/img11.png" >
 
 <img src="images/img12.png" >
@@ -13,14 +15,19 @@ Refer the product documentation [here](https://www.ibm.com/docs/en/instana-obser
 Make a note of Key and URL.
 
 <img src="images/img14.png" >
-
+</details>
 ## 2. Mobile App
+
+<details><summary>Click me for more info</summary>
+
 
 Here is the screenshots of the TODO Mobile App.
 
 <img src="images/img21.png" >
-
+</details>
 ## 3. Instrumenting the Mobile App Code
+
+<details><summary>Click me for more info</summary>
 
 The source code of the TODO Mobile app is available [here](./src-todo-app)  
 
@@ -61,9 +68,10 @@ Implement a Track View for all the screens.
 Implement a Track User Action for add, update and delete functions.
 
 <img src="images/img40.png" >
-
+</details>
 ## 4. View App Dashboard
 
+<details><summary>Click me for more info</summary>
 
 <img src="images/img41.png" >
 
@@ -77,8 +85,11 @@ Implement a Track User Action for add, update and delete functions.
 <img src="images/img46.png" >
 <img src="images/img47.png" >
 <img src="images/img48.png" >
-
+</details>
 ## 5. View App Analytics
+
+<details><summary>Click me for more info</summary>
+
 
 <img src="images/img51.png" >
 <img src="images/img52.png" >
@@ -86,8 +97,11 @@ Implement a Track User Action for add, update and delete functions.
 <img src="images/img54.png" >
 <img src="images/img55.png" >
 <img src="images/img56.png" >
-
+</details>
 ## 6. View App Analytics Events
+
+<details><summary>Click me for more info</summary>
+
 
 <img src="images/img61.png" >
 <img src="images/img62.png" >
@@ -95,6 +109,4 @@ Implement a Track User Action for add, update and delete functions.
 <img src="images/img64.png" >
 <img src="images/img65.png" >
 
-
-
-
+</details>
