@@ -34,7 +34,7 @@ You can now see the newly created app in the list.
 
 </details>
 
-## 2. Mobile App 
+## 2. Mobile App UI
 
 <details><summary>Click me for more info</summary>
 
