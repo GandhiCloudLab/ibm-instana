@@ -1,28 +1,44 @@
 # Mobile Apps Monitoring - Flutter Based
 
-Refer the product documentation [here](https://www.ibm.com/docs/en/instana-observability/1.0.315?topic=instana-monitoring-mobile-applications) for more detailed info about this.
+This document explains how to monitor a mobile application in Instana. It covers creating a Mobile App Perspective in Instana, instrumenting the Flutter code, and viewing dashboards and analytics.
 
-## 1. Create Mobile App in Instana
+Refer to the official product documentation for more details : [IBM Instana – Monitoring Mobile Applications](https://www.ibm.com/docs/en/instana-observability/1.0.315?topic=instana-monitoring-mobile-applications).
+
+## 1. Create Mobile App Perspective in Instana
 
 <details><summary>Click me for more info</summary>
+
+Let's create a Mobile App Perspective in Instana
+
+1. Click on **Website and Mobile Apps** in the left navigation menu.
 
 <img src="images/img11.png" >
 
+2. Click the **Mobile Apps** tab
+3. Click the **Add Mobile App** button
+
 <img src="images/img12.png" >
+
+4. Enter the **Mobile App Name**
+5. Click the **Add Mobile App** button
 
 <img src="images/img13.png" >
 
-Make a note of Key and URL.
+Your app is now created. Make a note of the **Key** and **Reporting URL**.
 
 <img src="images/img14.png" >
+
+You can now see the newly created app in the list.
+
+<img src="images/img15.png" >
+
 </details>
 
-## 2. Mobile App
+## 2. Mobile App 
 
 <details><summary>Click me for more info</summary>
 
-
-Here is the screenshots of the TODO Mobile App.
+Below are screenshots of the TODO Mobile App that we will monitor.
 
 <img src="images/img21.png" >
 </details>
@@ -33,48 +49,52 @@ Here is the screenshots of the TODO Mobile App.
 
 The source code of the TODO Mobile app is available [here](./src-todo-app)  
 
-1. Include Instana Agent into dependencies.
+#### Dependencies
+
+ 1. Add the **Instana Agent** to the project dependencies.
 
 <img src="images/img31.png" >
 
-2. InstanaConfig
+#### InstanaConfig
 
-Configure the Key, URL and Meta data info in the InstanaConfig.
+2. Configure the **Key**, **Reporting URL** and **Meta data** in the InstanaConfig.
 
 <img src="images/img32.png" >
 
-3. InstanaAgent.setup
+#### InstanaAgent.setup
 
-In the main method, call the instana setup related to API with the key and URL referenced from Instana Config
+3. In the main method, call the instana setup API using the **Key**, **Reporting URL** from Configuration.
 
 <img src="images/img33.png" >
 
-4. InstanaService
+#### InstanaService
 
-Create a InstanaService class with the below functions to call Instana Agent.
+4. Create a InstanaService class with the functions to interact with the Instana Agent..
 
 <img src="images/img34.png" >
 <img src="images/img35.png" >
 <img src="images/img36.png" >
 
-5. TrackView
+#### TrackView
 
-Implement a Track View for all the screens.
+5. Implement **Track View** for all the screens.
 
 <img src="images/img37.png" >
 <img src="images/img38.png" >
 <img src="images/img39.png" >
 
-6. Track User Action
+#### Track User Action
 
-Implement a Track User Action for add, update and delete functions.
+6. Implement **Track User Action** for operations like add, update, and delete.
 
 <img src="images/img40.png" >
 </details>
 
-## 4. View App Dashboard
+## 4. View App Dashboard in Instana
 
 <details><summary>Click me for more info</summary>
+
+Below are various sections of the **Mobile App Dashboard** in Instana:
 
 <img src="images/img41.png" >
 
@@ -90,10 +110,11 @@ Implement a Track User Action for add, update and delete functions.
 <img src="images/img48.png" >
 </details>
 
-## 5. View App Analytics
+## 5. View App Analytics in Instana
 
 <details><summary>Click me for more info</summary>
 
+Instana provides detailed **Mobile App Analytics** views:
 
 <img src="images/img51.png" >
 <img src="images/img52.png" >
@@ -107,6 +128,7 @@ Implement a Track User Action for add, update and delete functions.
 
 <details><summary>Click me for more info</summary>
 
+You can explore **Mobile App Analytics Events** in Instana:
 
 <img src="images/img61.png" >
 <img src="images/img62.png" >
