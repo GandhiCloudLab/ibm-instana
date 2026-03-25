@@ -43,7 +43,7 @@ Follow the below screenshots to create API simple test
 <img src="images/img116.png" >
 </details>
 
-## 2. View Test Dashboard - API simple test
+## 3. View Test Dashboard - API simple test
 
 Follow the below screenshots to View Test Dashboard for API simple test
 
@@ -64,7 +64,7 @@ Follow the below screenshots to View Test Dashboard for API simple test
 </details>
 
 
-## 3. Create Synthetic Test - Browser simple test
+## 4. Create Synthetic Test - Browser simple test
 
 Follow the below screenshots to create Browser simple test
 
@@ -91,7 +91,7 @@ Follow the below screenshots to create Browser simple test
 
 </details>
 
-## 4. View Test Dashboard - Browser simple test
+## 5. View Test Dashboard - Browser simple test
 
 Follow the below screenshots to View Test Dashboard for Browser simple test
 
