@@ -41,6 +41,7 @@ Follow the below screenshots to create API simple test
 <img src="images/img114.png" >
 <img src="images/img115.png" >
 <img src="images/img116.png" >
+<img src="images/img117.png" >
 </details>
 
 ## 3. View Test Dashboard - API simple test
