@@ -107,7 +107,46 @@ The source code of the TODO Mobile app is available [here](./files)
 
 </details>
 
-## 5. View App Dashboard in Instana
+## 5. Running Mobile App
+
+### 5.1 Running in MacOS with iOS Simulator
+
+
+1. Open Xcode using the command below.
+```
+open -a Xcode
+```
+
+XCode opens like this.
+
+<img src="images/img81.png" >
+
+2. Open the Simulator using the command below.
+```
+open -a Simulator
+```
+
+Simulator opens like this.
+
+<img src="images/img82.png" >
+
+3. Run the app using the command below.
+```
+flutter run
+```
+
+App opens like this.
+
+<img src="images/img83.png" >
+
+4. Play around the app and generate traffic.
+
+### 5.2 Running in Android
+
+To be done.
+
+
+## 6. View App Dashboard in Instana
 
 <details><summary>Click me for more info</summary>
 
@@ -127,7 +166,7 @@ Below are various sections of the **Mobile App Dashboard** in Instana:
 <img src="images/img48.png" >
 </details>
 
-## 6. View App Analytics in Instana
+## 7. View App Analytics in Instana
 
 <details><summary>Click me for more info</summary>
 
@@ -141,7 +180,7 @@ Instana provides detailed **Mobile App Analytics** views:
 <img src="images/img56.png" >
 </details>
 
-## 7. View App Analytics Events
+## 8. View App Analytics Events
 
 <details><summary>Click me for more info</summary>
 
