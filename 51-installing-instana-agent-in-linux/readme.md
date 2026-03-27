@@ -69,7 +69,7 @@ hostnamectl
 ```
 You may see the details as below.
 
-Note the `Host Name`.
+2. Note the `Host Name`.
 
 <img src="images/img21.png" >
 
@@ -80,7 +80,7 @@ Note the `Host Name`.
 <details><summary>Click me for more info</summary>
 
 
-Search for the above noted `Host Name`.
+1. Search for the above noted `Host Name`.
 
 <img src="images/img31.png" >
 
@@ -90,6 +90,7 @@ Search for the above noted `Host Name`.
 <img src="images/img34.png" >
 <img src="images/img35.png" >
 <img src="images/img36.png" >
+
 </details>
 
 
