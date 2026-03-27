@@ -13,7 +13,7 @@
         <td>
             Creating a Mobile App Perspective in Instana  |  
             Instrumenting the Flutter code  |  
-            - Viewing dashboards and analytics. </td>
+            Viewing dashboards and analytics </td>
         <td><a href="./10-mobile-apps-monitoring">Link</a></td>
     </tr>
     <tr>
@@ -28,7 +28,7 @@
         <td>3</td>
         <td>Synthetic Monitoring</td>
         <td>Create Synthetic Tests  |  
-            View Synthetic Tests Dashboard. </td>
+            View Synthetic Tests Dashboard </td>
         <td><a href="./21-synthetic-monitoring-simple">Link</a></td>
     </tr>     
 <table>
