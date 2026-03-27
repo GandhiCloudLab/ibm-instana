@@ -17,7 +17,7 @@ Refer to the official product documentation for more details : [IBM Instana – 
 ## 2. Run the Backend API Application
 
 <details><summary>Click me for more info</summary>
-
+TODO
 </details>
 
 ## 3. View Service Dashboard in Instana
@@ -50,8 +50,8 @@ Refer to the official product documentation for more details : [IBM Instana – 
 
 <details><summary>Click me for more info</summary>
 
+<img src="images/img140.png" >
 <img src="images/img141.png" >
-<img src="images/img142.png" >
 
 </details>
 
@@ -67,8 +67,6 @@ Refer to the official product documentation for more details : [IBM Instana – 
 <img src="images/img155.png" >
 <img src="images/img156.png" >
 <img src="images/img157.png" >
-<img src="images/img158.png" >
-<img src="images/img159.png" >
 <img src="images/img160.png" >
 <img src="images/img161.png" >
 <img src="images/img162.png" >
@@ -114,8 +112,11 @@ Refer to the official product documentation for more details : [IBM Instana – 
 <details><summary>Click me for more info</summary>
 
 <img src="images/img201.png" >
+
 <img src="images/img202.png" >
+
 <img src="images/img203.png" >
+
 <img src="images/img204.png" >
 <img src="images/img205.png" >
 
@@ -126,10 +127,14 @@ Refer to the official product documentation for more details : [IBM Instana – 
 <details><summary>Click me for more info</summary>
 
 <img src="images/img221.png" >
+
 <img src="images/img222.png" >
 <img src="images/img223.png" >
+
 <img src="images/img224.png" >
+
 <img src="images/img225.png" >
+
 <img src="images/img226.png" >
 <img src="images/img227.png" >
 <img src="images/img228.png" >

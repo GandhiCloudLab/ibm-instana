@@ -22,7 +22,7 @@ Refer to the official product documentation for more details : [IBM Instana – 
 
 4. Choose the options as seen in the below screen.
 
-5. Copy the command displayed as **curl -o setup_agent.sh  https://setup.instana.io/agent &&....** .
+5. Copy the command displayed as `curl -o setup_agent.sh  https://setup.instana.io/agent &&....` .
 <img src="images/img14.png" >
 
 6. Run the copied command in the Linux VM.
