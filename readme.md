@@ -10,7 +10,8 @@
     <tr>
         <td>1</td>
         <td>Mobile Apps Monitoring - Flutter Based</td>
-        <td>- Creating a Mobile App Perspective in Instana, 
+        <td>
+            - Creating a Mobile App Perspective in Instana, 
             - Instrumenting the Flutter code, 
             - Viewing dashboards and analytics. </td>
         <td><a href="./10-mobile-apps-monitoring">Link</a></td>

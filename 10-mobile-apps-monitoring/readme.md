@@ -92,6 +92,7 @@ The source code of the TODO Mobile app is available [here](./files)
 <img src="images/img40b.png" >
 
 <img src="images/img40c.png" >
+</details>
 
 ## 4. Connecting from Mobile App to Backend API
 
