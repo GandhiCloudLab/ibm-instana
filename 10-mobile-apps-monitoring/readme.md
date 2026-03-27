@@ -87,7 +87,22 @@ The source code of the TODO Mobile app is available [here](./files)
 
 6. Implement **Track User Action** for operations like add, update, and delete.
 
-<img src="images/img40.png" >
+<img src="images/img40a.png" >
+
+<img src="images/img40b.png" >
+
+<img src="images/img40c.png" >
+
+#### Connecting to Backend API
+
+1. See the backend API URL is given below.
+
+<img src="images/img71.png" >
+
+2. See the backend API **getTodos** implemented here.
+
+<img src="images/img72.png" >
+
 </details>
 
 ## 4. View App Dashboard in Instana

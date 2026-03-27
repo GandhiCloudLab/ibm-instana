@@ -11,6 +11,8 @@ Refer to the official product documentation for more details : [IBM Instana – 
 
 ## 1. Installing Instana Agent
 
+<details><summary>Click me for more info</summary>
+
 1. Click the **Agents & collectors** menu in the left navigation of Instana console.
 <img src="images/img11.png" >
 
@@ -29,8 +31,12 @@ Refer to the official product documentation for more details : [IBM Instana – 
 ```
 curl -o setup_agent.sh https://setup.instana.io/agent && chmod 700 ./setup_agent.sh && sudo ./setup_agent.sh -a xxxxxxxxx -d xxxxxxxxx -t static -e ingress-orange-saas.instana.io:443
 ```
+<details>
 
 ## 2. Start the Instana Agent
+
+<details><summary>Click me for more info</summary>
+
 
 Refer to the official product documentation for more details : [IBM Instana – Administering the host agent on Linux](https://www.ibm.com/docs/en/instana-observability/1.0.315?topic=linux-administering-agent).
 
@@ -49,8 +55,12 @@ It should show the **active** status as below.
 
 <img src="images/img15.png" >
 
+<details>
 
 ## 3. Get Host Details
+
+<details><summary>Click me for more info</summary>
+
 
 1. Run the below command to know the details of the Host where agent is running.
 
@@ -63,8 +73,12 @@ Note the `Host Name`.
 
 <img src="images/img21.png" >
 
+<details>
 
 ## 4. View the Instana Agent in Instana
+
+<details><summary>Click me for more info</summary>
+
 
 Search for the above noted `Host Name`.
 
@@ -76,10 +90,10 @@ Search for the above noted `Host Name`.
 <img src="images/img31.png" >
 <img src="images/img31.png" >
 <img src="images/img31.png" >
+<details>
 
 
-
-## 3. Stop the Instana Agent
+## 5. Stop the Instana Agent
 
 1. Stop the agent using the below command, if required.
 ```
