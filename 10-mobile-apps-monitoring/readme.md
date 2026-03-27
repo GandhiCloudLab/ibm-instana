@@ -109,6 +109,8 @@ The source code of the TODO Mobile app is available [here](./files)
 
 ## 5. Running Mobile App
 
+<details><summary>Click me for more info</summary>
+
 ### 5.1 Running in MacOS with iOS Simulator
 
 
@@ -145,6 +147,7 @@ App opens like this.
 
 To be done.
 
+</details>
 
 ## 6. View App Dashboard in Instana
 
