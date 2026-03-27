@@ -95,6 +95,7 @@ The source code of the TODO Mobile app is available [here](./files)
 </details>
 
 ## 4. Connecting from Mobile App to Backend API
+<details><summary>Click me for more info</summary>
 
 1. See the backend API URL is given below.
 
