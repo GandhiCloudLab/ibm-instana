@@ -31,7 +31,7 @@ Refer to the official product documentation for more details : [IBM Instana – 
 ```
 curl -o setup_agent.sh https://setup.instana.io/agent && chmod 700 ./setup_agent.sh && sudo ./setup_agent.sh -a xxxxxxxxx -d xxxxxxxxx -t static -e ingress-orange-saas.instana.io:443
 ```
-<details>
+</details>
 
 ## 2. Start the Instana Agent
 
@@ -55,7 +55,7 @@ It should show the **active** status as below.
 
 <img src="images/img15.png" >
 
-<details>
+</details>
 
 ## 3. Get Host Details
 
@@ -73,7 +73,7 @@ Note the `Host Name`.
 
 <img src="images/img21.png" >
 
-<details>
+</details>
 
 ## 4. View the Instana Agent in Instana
 
@@ -90,7 +90,7 @@ Search for the above noted `Host Name`.
 <img src="images/img31.png" >
 <img src="images/img31.png" >
 <img src="images/img31.png" >
-<details>
+</details>
 
 
 ## 5. Stop the Instana Agent
