@@ -47,7 +47,7 @@ Below are screenshots of the TODO Mobile App that we will monitor.
 
 <details><summary>Click me for more info</summary>
 
-The source code of the TODO Mobile app is available [here](./src-todo-app)  
+The source code of the TODO Mobile app is available [here](./files)  
 
 #### Dependencies
 

@@ -22,12 +22,12 @@ Refer to the official product documentation for more details : [IBM Instana – 
 
 4. Choose the options as seen in the below screen.
 
-5. Copy the command displayed as `curl -o setup_agent.sh  https://setup.instana.io/agent &&....` .
+5. Copy the command displayed as `curl -o setup_agent.sh  https://setup.instana.io/agent &&....** .
 <img src="images/img14.png" >
 
 6. Run the copied command in the Linux VM.
 ```
-curl -o setup_agent.sh https://setup.instana.io/agent && chmod 700 ./setup_agent.sh && sudo ./setup_agent.sh -a xxxxxxxxx -d xxxxxxxxx -t static -e ingress-orange-saas.instana.io:443   
+curl -o setup_agent.sh https://setup.instana.io/agent && chmod 700 ./setup_agent.sh && sudo ./setup_agent.sh -a xxxxxxxxx -d xxxxxxxxx -t static -e ingress-orange-saas.instana.io:443
 ```
 
 ## 2. Start the Instana Agent
@@ -48,6 +48,36 @@ systemctl status instana-agent.service
 It should show the **active** status as below.
 
 <img src="images/img15.png" >
+
+
+## 3. Get Host Details
+
+1. Run the below command to know the details of the Host where agent is running.
+
+```
+hostnamectl
+```
+You may see the details as below.
+
+Note the `Host Name`.
+
+<img src="images/img21.png" >
+
+
+## 4. View the Instana Agent in Instana
+
+Search for the above noted `Host Name`.
+
+<img src="images/img31.png" >
+
+<img src="images/img31.png" >
+
+<img src="images/img31.png" >
+<img src="images/img31.png" >
+<img src="images/img31.png" >
+<img src="images/img31.png" >
+
+
 
 ## 3. Stop the Instana Agent
 

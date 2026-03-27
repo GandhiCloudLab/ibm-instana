@@ -6,18 +6,72 @@ Refer to the official product documentation for more details : [IBM Instana – 
 
 ## PreRequisite
 
-1. Linux System with mininal configurations. OS could be Ubuntu.
-2. Docker install in the Linux.
-3. Access to the Instanana 
+1. A Linux system with basic configuration (Ubuntu recommended)
+2. Docker installed and properly configured
+3. Access to Instana 
 
 ## 1. Install Instana Agent
 
-1. Install the Instana agent using the steps given here  [Installing Instana Agent in Linux](../51-installing-instana-agent-in-linux).
+1. Install the Instana agent in the Linux box using the steps given here  [Installing Instana Agent in Linux](../51-installing-instana-agent-in-linux).
 
 ## 2. Run the Backend API Application
 
 <details><summary>Click me for more info</summary>
-TODO
+
+### 2.1 Source code
+
+The source code of the Python based Backend API is available [here](./files/src)  
+
+### 2.2 Run the app
+
+Lets run the Backend API app in the Linux box, where the instana agent is installed.
+
+#### Run using source code (Optional)
+
+1. You can run the app using the source code from the above link.
+
+```
+python -m venv venv
+source venv/bin/activate
+
+python -m pip install -r requirements.txt
+
+# Start the app
+python main.py
+```
+
+#### Run using Docker
+
+1. Run the below command run the app as a docker.
+
+```
+docker run -d -p 8000:8000 --name my-todo-app --env INSTANA_AGENT_PORT="443"  gandigit/todo-app:latest
+```
+
+### 2.3 Test the app
+
+1. Run the below curl scripts in the linus box to see, whether app is running.
+
+```
+# Health check
+curl http://localhost:8000/health
+
+# Get statistics
+curl http://localhost:8000/api/todos/statistics
+
+# Get all todos
+curl http://localhost:8000/api/todos
+
+```
+
+### 2.4 Generate Load in the Backend API App 
+
+1. Run commands one by one available in the load script [here](./files/scripts/10-load.sh)  
+
+### 2.5 Generate Load in the Mobile App 
+
+1. Play around with the Mobile app to generate some load.
+
 </details>
 
 ## 3. View Service Dashboard in Instana
