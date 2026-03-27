@@ -93,7 +93,7 @@ The source code of the TODO Mobile app is available [here](./files)
 
 <img src="images/img40c.png" >
 
-#### Connecting to Backend API
+## 4. Connecting from Mobile App to Backend API
 
 1. See the backend API URL is given below.
 
@@ -105,7 +105,7 @@ The source code of the TODO Mobile app is available [here](./files)
 
 </details>
 
-## 4. View App Dashboard in Instana
+## 5. View App Dashboard in Instana
 
 <details><summary>Click me for more info</summary>
 
@@ -125,7 +125,7 @@ Below are various sections of the **Mobile App Dashboard** in Instana:
 <img src="images/img48.png" >
 </details>
 
-## 5. View App Analytics in Instana
+## 6. View App Analytics in Instana
 
 <details><summary>Click me for more info</summary>
 
@@ -139,7 +139,7 @@ Instana provides detailed **Mobile App Analytics** views:
 <img src="images/img56.png" >
 </details>
 
-## 6. View App Analytics Events
+## 7. View App Analytics Events
 
 <details><summary>Click me for more info</summary>
 
