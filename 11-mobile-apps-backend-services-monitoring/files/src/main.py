@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from routes.todos import router as todos_router
 from instana_config import InstanaConfig
+from starlette.middleware.base import BaseHTTPMiddleware
 import sys
 
 # Initialize Instana monitoring (SaaS-based)
@@ -59,6 +60,26 @@ if InstanaConfig.ENABLED:
 else:
     print("ℹ️  Instana monitoring is disabled (INSTANA_ENABLED=false)")
 
+# Middleware for Backend Correlation - adds Server-Timing header with trace ID
+class InstanaBackendCorrelationMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        response = await call_next(request)
+        
+        # Add Server-Timing header for backend correlation
+        if instana_initialized:
+            try:
+                from instana.singletons import tracer
+                span = tracer.active_span
+                if span:
+                    trace_id = span.context.trace_id
+                    # Format: Server-Timing: intid;desc=<trace_id>
+                    response.headers["Server-Timing"] = f"intid;desc={trace_id:x}"
+            except Exception as e:
+                # Silently fail - don't break the response
+                pass
+        
+        return response
+
 # Create FastAPI app
 app = FastAPI(
     title="Todo API",
@@ -68,6 +89,9 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# Add Backend Correlation Middleware (must be before CORS)
+app.add_middleware(InstanaBackendCorrelationMiddleware)
+
 # Configure CORS for Flutter web and mobile apps
 app.add_middleware(
     CORSMiddleware,
@@ -75,6 +99,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["Server-Timing"],  # Expose Server-Timing header to frontend
 )
 
 # Include routers

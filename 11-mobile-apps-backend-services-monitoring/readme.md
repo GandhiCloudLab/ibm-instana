@@ -1,6 +1,6 @@
 # Mobile Apps Backend Services Monitoring
 
-This document explains how to monitor a mobile application Backend API services in Instana.
+This document explains how to monitor a mobile application Backend API services in Instana. It covers Installing Instana Agent, Run the Backend API Application and View Service Dashboard 
 
 Refer to the official product documentation for more details : [IBM Instana – Monitoring Mobile Applications](https://www.ibm.com/docs/en/instana-observability/1.0.315?topic=instana-monitoring-mobile-applications).
 
@@ -14,15 +14,40 @@ Refer to the official product documentation for more details : [IBM Instana – 
 
 1. Install the Instana agent in the Linux box using the steps given here  [Installing Instana Agent in Linux](../51-installing-instana-agent-in-linux).
 
-## 2. Run the Backend API Application
+
+## 2. Instrumenting the Backend API Application
 
 <details><summary>Click me for more info</summary>
 
-### 2.1 Source code
+### Instrument the app
+
+<img src="images/img251.png" >
+
+<img src="images/img252.png" >
+
+<img src="images/img253.png" >
+
+### Backend Tracing ID
+
+In server side (Backend API) need to add middleware to inject the **Server-Timing header** with the trace ID. 
+
+<img src="images/img241.png">
+
+<img src="images/img241.png">
+
+
+
+</details>
+
+## 3. Run the Backend API Application
+
+<details><summary>Click me for more info</summary>
+
+### 3.1 Source code
 
 The source code of the Python based Backend API is available [here](./files/src)  
 
-### 2.2 Run the app
+### 3.2 Run the app
 
 Lets run the Backend API app in the Linux box, where the instana agent is installed.
 
@@ -48,7 +73,7 @@ python main.py
 docker run -d -p 8000:8000 --name my-todo-app --env INSTANA_AGENT_PORT="443"  gandigit/todo-app:latest
 ```
 
-### 2.3 Test the app
+### 3.3 Test the app
 
 1. Run the below curl scripts in the linus box to see, whether app is running.
 
@@ -64,17 +89,17 @@ curl http://localhost:8000/api/todos
 
 ```
 
-### 2.4 Generate Load in the Backend API App 
+### 3.4 Generate Load in the Backend API App 
 
 1. Run commands one by one available in the load script [here](./files/scripts/10-load.sh)  
 
-### 2.5 Generate Load in the Mobile App 
+### 3.5 Generate Load in the Mobile App 
 
 1. Play around with the Mobile app to generate some load.
 
 </details>
 
-## 3. View Service Dashboard in Instana
+## 4. View Service Dashboard in Instana
 
 <details><summary>Click me for more info</summary>
 
@@ -90,7 +115,7 @@ curl http://localhost:8000/api/todos
 
 </details>
 
-## 4. View End Point Details
+## 5. View End Point Details
 
 <details><summary>Click me for more info</summary>
 
@@ -100,7 +125,7 @@ curl http://localhost:8000/api/todos
 
 </details>
 
-## 5. View Stack Details
+## 6. View Stack Details
 
 <details><summary>Click me for more info</summary>
 
@@ -109,7 +134,7 @@ curl http://localhost:8000/api/todos
 
 </details>
 
-## 6. View Host Details
+## 7. View Host Details
 
 <details><summary>Click me for more info</summary>
 
@@ -127,7 +152,7 @@ curl http://localhost:8000/api/todos
 </details>
 
 
-## 7. View Docker Container Details
+## 8. View Docker Container Details
 
 <details><summary>Click me for more info</summary>
 
@@ -140,7 +165,7 @@ curl http://localhost:8000/api/todos
 </details>
 
 
-## 8. View Docker Container Details
+## 9. View Docker Container Details
 
 <details><summary>Click me for more info</summary>
 
@@ -151,7 +176,7 @@ curl http://localhost:8000/api/todos
 </details>
 
 
-## 9. View Python App Details
+## 10. View Python App Details
 
 <details><summary>Click me for more info</summary>
 
@@ -161,7 +186,7 @@ curl http://localhost:8000/api/todos
 
 </details>
 
-## 10. View Tracing Details from Services
+## 11. View Tracing Details from Services
 
 <details><summary>Click me for more info</summary>
 
@@ -176,7 +201,7 @@ curl http://localhost:8000/api/todos
 
 </details>
 
-## 11. View Tracing Details from EndPoint
+## 12. View Tracing Details from EndPoint
 
 <details><summary>Click me for more info</summary>
 

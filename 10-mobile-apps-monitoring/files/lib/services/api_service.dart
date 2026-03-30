@@ -57,6 +57,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = json.decode(response.body);
@@ -103,6 +108,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         await marker.finish();
@@ -156,6 +166,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 201) {
         await marker.finish();
@@ -205,6 +220,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         await marker.finish();
@@ -253,6 +273,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         await marker.finish();
@@ -301,6 +326,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         await marker.finish();
@@ -349,6 +379,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -394,6 +429,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
 
       if (response.statusCode == 200) {
         await marker.finish();
@@ -438,6 +478,11 @@ class ApiService {
       marker.responseStatusCode = response.statusCode;
       marker.responseSizeBody = response.bodyBytes.length;
       marker.responseSizeBodyDecoded = response.contentLength;
+      
+      // Extract backend tracing ID for correlation
+      marker.backendTracingID = BackendTracingIDParser.fromHeadersMap(
+        response.headers.map((key, value) => MapEntry(key, value))
+      );
       
       await marker.finish();
       return response.statusCode == 200;

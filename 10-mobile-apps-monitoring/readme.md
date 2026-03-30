@@ -103,6 +103,22 @@ The source code of the TODO Mobile app is available [here](./files)
 <img src="images/img92.png" >
 <img src="images/img93.png" >
 
+#### Backend Tracing
+
+7. Implement **Backend Tracing** for operations that calls Backend APIs and so on.
+
+The frontend to extract the **backendTracingID** from the **Server-Timing** header and set it on the marker. 
+
+<img src="images/img94.png" >
+
+<img src="images/img95.png" >
+
+Note : In server side (Backend API) need to add middleware to inject the **Server-Timing header** with the trace ID. This is documented separately.
+
+<img src="images/img241.png">
+
+<img src="images/img241.png">
+
 </details>
 
 ## 4. Connecting from Mobile App to Backend API
