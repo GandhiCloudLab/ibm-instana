@@ -92,6 +92,17 @@ The source code of the TODO Mobile app is available [here](./files)
 <img src="images/img40b.png" >
 
 <img src="images/img40c.png" >
+
+#### Http Request Monitoring
+
+7. Implement **Http Request Monitoring** for operations that calls Backend APIs and so on.
+
+<img src="images/img90.png" >
+<img src="images/img91.png" >
+
+<img src="images/img92.png" >
+<img src="images/img93.png" >
+
 </details>
 
 ## 4. Connecting from Mobile App to Backend API

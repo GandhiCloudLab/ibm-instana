@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:instana_agent/instana_agent.dart';
 import '../models/todo.dart';
 import '../config/api_config.dart';
 
@@ -14,7 +15,7 @@ class ApiException implements Exception {
   String toString() => 'ApiException: $message${statusCode != null ? ' (Status: $statusCode)' : ''}';
 }
 
-/// Service class for handling all API requests
+/// Service class for handling all API requests with Instana monitoring
 class ApiService {
   static final ApiService _instance = ApiService._internal();
   factory ApiService() => _instance;
@@ -29,6 +30,8 @@ class ApiService {
     Category? category,
     bool? completed,
   }) async {
+    Marker? marker;
+    
     try {
       // Build query parameters
       final queryParams = <String, String>{};
@@ -39,20 +42,40 @@ class ApiService {
 
       final uri = Uri.parse(ApiConfig.todosUrl).replace(queryParameters: queryParams);
       
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'GET',
+        viewName: 'TodosList',
+      );
+      
       final response = await _client
           .get(uri)
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = json.decode(response.body);
+        await marker.finish();
         return jsonList.map((json) => Todo.fromJson(json)).toList();
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to load todos: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      // Capture error in Instana
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -60,22 +83,47 @@ class ApiService {
 
   /// Get a specific todo by ID
   Future<Todo> getTodo(String id) async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.todoUrl(id));
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'GET',
+        viewName: 'TodoDetail',
+      );
+      
       final response = await _client
-          .get(Uri.parse(ApiConfig.todoUrl(id)))
+          .get(uri)
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 200) {
+        await marker.finish();
         return Todo.fromJson(json.decode(response.body));
       } else if (response.statusCode == 404) {
+        marker.errorMessage = 'Todo not found';
+        await marker.finish();
         throw ApiException('Todo not found', 404);
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to load todo: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -83,24 +131,48 @@ class ApiService {
 
   /// Create a new todo
   Future<Todo> createTodo(Todo todo) async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.todosUrl);
+      final body = json.encode(todo.toJson());
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'POST',
+        viewName: 'CreateTodo',
+      );
+      
       final response = await _client
           .post(
-            Uri.parse(ApiConfig.todosUrl),
+            uri,
             headers: {'Content-Type': 'application/json'},
-            body: json.encode(todo.toJson()),
+            body: body,
           )
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 201) {
+        await marker.finish();
         return Todo.fromJson(json.decode(response.body));
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to create todo: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -108,26 +180,52 @@ class ApiService {
 
   /// Update an existing todo
   Future<Todo> updateTodo(String id, Todo todo) async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.todoUrl(id));
+      final body = json.encode(todo.toJson());
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'PUT',
+        viewName: 'UpdateTodo',
+      );
+      
       final response = await _client
           .put(
-            Uri.parse(ApiConfig.todoUrl(id)),
+            uri,
             headers: {'Content-Type': 'application/json'},
-            body: json.encode(todo.toJson()),
+            body: body,
           )
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 200) {
+        await marker.finish();
         return Todo.fromJson(json.decode(response.body));
       } else if (response.statusCode == 404) {
+        marker.errorMessage = 'Todo not found';
+        await marker.finish();
         throw ApiException('Todo not found', 404);
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to update todo: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -135,22 +233,47 @@ class ApiService {
 
   /// Toggle todo completion status
   Future<Todo> toggleTodo(String id) async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.toggleTodoUrl(id));
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'PATCH',
+        viewName: 'ToggleTodo',
+      );
+      
       final response = await _client
-          .patch(Uri.parse(ApiConfig.toggleTodoUrl(id)))
+          .patch(uri)
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 200) {
+        await marker.finish();
         return Todo.fromJson(json.decode(response.body));
       } else if (response.statusCode == 404) {
+        marker.errorMessage = 'Todo not found';
+        await marker.finish();
         throw ApiException('Todo not found', 404);
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to toggle todo: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -158,22 +281,47 @@ class ApiService {
 
   /// Delete a todo
   Future<void> deleteTodo(String id) async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.todoUrl(id));
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'DELETE',
+        viewName: 'DeleteTodo',
+      );
+      
       final response = await _client
-          .delete(Uri.parse(ApiConfig.todoUrl(id)))
+          .delete(uri)
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 200) {
+        await marker.finish();
         return;
       } else if (response.statusCode == 404) {
+        marker.errorMessage = 'Todo not found';
+        await marker.finish();
         throw ApiException('Todo not found', 404);
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to delete todo: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -181,21 +329,44 @@ class ApiService {
 
   /// Delete all completed todos
   Future<String> deleteCompletedTodos() async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.todosUrl);
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'DELETE',
+        viewName: 'DeleteCompletedTodos',
+      );
+      
       final response = await _client
-          .delete(Uri.parse(ApiConfig.todosUrl))
+          .delete(uri)
           .timeout(ApiConfig.connectionTimeout);
+
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
+        await marker.finish();
         return data['message'] ?? 'Completed todos deleted';
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to delete completed todos: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -203,20 +374,43 @@ class ApiService {
 
   /// Get todo statistics
   Future<Map<String, dynamic>> getStatistics() async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.statisticsUrl);
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'GET',
+        viewName: 'Statistics',
+      );
+      
       final response = await _client
-          .get(Uri.parse(ApiConfig.statisticsUrl))
+          .get(uri)
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+
       if (response.statusCode == 200) {
+        await marker.finish();
         return json.decode(response.body);
       } else {
+        marker.errorMessage = 'HTTP ${response.statusCode}: ${response.body}';
+        await marker.finish();
         throw ApiException(
           'Failed to load statistics: ${response.body}',
           response.statusCode,
         );
       }
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       if (e is ApiException) rethrow;
       throw ApiException('Network error: ${e.toString()}');
     }
@@ -224,13 +418,34 @@ class ApiService {
 
   /// Check API health
   Future<bool> checkHealth() async {
+    Marker? marker;
+    
     try {
+      final uri = Uri.parse(ApiConfig.healthUrl);
+      
+      // Start Instana HTTP capture
+      marker = await InstanaAgent.startCapture(
+        url: uri.toString(),
+        method: 'GET',
+        viewName: 'HealthCheck',
+      );
+      
       final response = await _client
-          .get(Uri.parse(ApiConfig.healthUrl))
+          .get(uri)
           .timeout(ApiConfig.connectionTimeout);
 
+      // Set response details on marker
+      marker.responseStatusCode = response.statusCode;
+      marker.responseSizeBody = response.bodyBytes.length;
+      marker.responseSizeBodyDecoded = response.contentLength;
+      
+      await marker.finish();
       return response.statusCode == 200;
     } catch (e) {
+      if (marker != null) {
+        marker.errorMessage = e.toString();
+        await marker.finish();
+      }
       return false;
     }
   }
