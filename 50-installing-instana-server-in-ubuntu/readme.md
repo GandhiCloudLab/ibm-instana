@@ -1,11 +1,13 @@
 # Installing Instana Server on an Ubuntu VM
-This document describes how to install the **Instana Server** on an **Ubuntu virtual machine**.
-In this guide, we focus on installing the **Standard Edition** in a **single-node cluster**.
-The installation consists of the following steps:
 
-**Preparation** (file system partitioning and mounting)
-**Adding the Instana repository and installing the stanctl tool**
-**Deploying Instana**
+This document describes how to install the **Instana Server** on an **Ubuntu virtual machine**.
+
+In this guide, we focus on installing the **Standard Edition** in a **single-node cluster**.
+
+The installation consists of the following steps:
+- **Preparation** (file system partitioning and mounting)
+- **Adding the Instana repository and installing the stanctl tool**
+- **Deploying Instana**
 
 Links to the official IBM documentation are provided in the **References** section.
 
@@ -27,7 +29,7 @@ Links to the official IBM documentation are provided in the **References** secti
 lsblk
 ```
 
-    You should see output similar to the following, where the **vda** disk contains the **vda1** and **vda2**partitions.
+You should see output similar to the following, where the **vda** disk contains the **vda1** and **vda2**partitions.
 
 <img src="images/img11.png" >
 
@@ -242,7 +244,7 @@ stanctl --version
 
 <details><summary>Click here for more information</summary>
 
-1. Get the **sales-key** and **download-key** for the instana server. Refer the IBM documentation [here](https://www.ibm.com/docs/en/instana-observability?topic=edition-license-activation-renewal). You will also get the *stenant name** and **unit name**.
+1. Get the **sales-key** and **download-key** for the instana server. Refer the IBM documentation [here](https://www.ibm.com/docs/en/instana-observability?topic=edition-license-activation-renewal). You will also get the **tenant name** and **unit name**.
 
 2. Idenifty the base domain of the VM.
 
