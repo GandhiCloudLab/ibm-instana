@@ -1,6 +1,6 @@
-# Installing Instana Agent in Linux
+# Installing Instana Agent on Linux
 
-This document explains how to Install Instana Agent in Linux.
+This document explains how to Install Instana Agent on Linux.
 
 Refer to the official product documentation for more details : [IBM Instana – Installing the agent on Linux](https://www.ibm.com/docs/en/instana-observability/1.0.315?topic=linux-installing-agent).
 
